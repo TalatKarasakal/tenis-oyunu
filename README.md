@@ -31,8 +31,12 @@ Bu projenin en dikkat çekici noktası, **İnsan-Yapay Zeka İş Birliği (AI-Ag
 - Hızlı prototipleme ve dokümantasyon süreçleri profesyonel seviyeye taşınmıştır.
 
 ### 🚀 Kurulum ve Çalıştırma Talimatları
+
+> [!IMPORTANT]
+> Bu depo **Git LFS (Large File Storage)** kullanmaktadır. Projeyi klonlamadan önce bilgisayarınızda Git LFS'in kurulu olduğundan emin olun ve `git lfs install` komutunu çalıştırın. Aksi takdirde görseller ve yazı tipleri yüklenmeyecektir.
+
 1. **Unity Hub'ı Açın:** Unity 6 veya üzeri bir versiyonun yüklü olduğundan emin olun.
-2. **Projeyi Klonlayın:** `git clone https://github.com/kullaniciadi/tenis-oyunu.git`
+2. **Projeyi Klonlayın:** `git clone https://github.com/TalatKarasakal/tenis-oyunu.git`
 3. **Unity ile Açın:** Klasörü Unity editörüne sürükleyin ve kütüphanelerin yüklenmesini bekleyin.
 4. **Sahneyi Başlatın:** `Assets/Scenes/OyunSahnesi.unity` dosyasını açın ve **Play** butonuna basın.
 
@@ -65,7 +69,11 @@ A standout aspect of this project is the **Human-AI Collaboration (AI-Agent Coll
 - Professional-grade rapid prototyping and documentation.
 
 ### 🚀 Installation and Execution Instructions
+
+> [!IMPORTANT]
+> This repository uses **Git LFS (Large File Storage)**. Make sure Git LFS is installed on your computer and run `git lfs install` before cloning the repository. Otherwise, images and fonts will not load properly.
+
 1. **Open Unity Hub:** Ensure Unity 6 or later is installed.
-2. **Clone the Repository:** `git clone https://github.com/username/tenis-oyunu.git`
+2. **Clone the Repository:** `git clone https://github.com/TalatKarasakal/tenis-oyunu.git`
 3. **Open with Unity:** Drag the folder into the Unity Editor and wait for dependencies to resolve.
 4. **Launch the Scene:** Open `Assets/Scenes/OyunSahnesi.unity` and click the **Play** button.
