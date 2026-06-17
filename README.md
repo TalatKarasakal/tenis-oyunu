@@ -24,15 +24,9 @@ Bu proje, Unity 6 motoru kullanılarak geliştirilmiş, modern görsellere ve ge
 - **Giriş Sistemi:** New Input System
 - **Versiyon Kontrol:** Git
 
-### 🤖 Geliştirme Süreci
-Bu projenin en dikkat çekici noktası, **İnsan-Yapay Zeka İş Birliği (AI-Agent Collaboration)** ile geliştirilmiş olmasıdır. Mimari kararlar, kod optimizasyonları ve hata ayıklama süreçleri, bir Kıdemli Yazılım Geliştiricisi ile bir Yapay Zeka Ajanının senkronize çalışması sonucunda tamamlanmıştır. Bu yaklaşım sayesinde:
-- Modüler ve sürdürülebilir bir kod yapısı oluşturulmuştur.
-- Performans darboğazları önceden tespit edilip optimize edilmiştir.
-- Hızlı prototipleme ve dokümantasyon süreçleri profesyonel seviyeye taşınmıştır.
-
 ### 🚀 Kurulum ve Çalıştırma Talimatları
 1. **Unity Hub'ı Açın:** Unity 6 veya üzeri bir versiyonun yüklü olduğundan emin olun.
-2. **Projeyi Klonlayın:** `git clone https://github.com/kullaniciadi/tenis-oyunu.git`
+2. **Projeyi Klonlayın:** `git clone https://github.com/TalatKarasakal/tenis-oyunu.git`
 3. **Unity ile Açın:** Klasörü Unity editörüne sürükleyin ve kütüphanelerin yüklenmesini bekleyin.
 4. **Sahneyi Başlatın:** `Assets/Scenes/OyunSahnesi.unity` dosyasını açın ve **Play** butonuna basın.
 
@@ -58,14 +52,8 @@ Bu projenin en dikkat çekici noktası, **İnsan-Yapay Zeka İş Birliği (AI-Ag
 - **Input System:** New Input System
 - **Version Control:** Git
 
-### 🤖 Development Process
-A standout aspect of this project is the **Human-AI Collaboration (AI-Agent Collaboration)**. Architectural decisions, code optimizations, and debugging were completed through the synchronized effort of a Senior Software Developer and an AI Agent. This methodology resulted in:
-- A modular and sustainable codebase.
-- Proactive identification and optimization of performance bottlenecks.
-- Professional-grade rapid prototyping and documentation.
-
 ### 🚀 Installation and Execution Instructions
 1. **Open Unity Hub:** Ensure Unity 6 or later is installed.
-2. **Clone the Repository:** `git clone https://github.com/username/tenis-oyunu.git`
+2. **Clone the Repository:** `git clone https://github.com/TalatKarasakal/tenis-oyunu.git`
 3. **Open with Unity:** Drag the folder into the Unity Editor and wait for dependencies to resolve.
 4. **Launch the Scene:** Open `Assets/Scenes/OyunSahnesi.unity` and click the **Play** button.
