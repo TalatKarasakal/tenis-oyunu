@@ -1,5 +1,9 @@
 # tenis-oyunu 🎾
 
+[![Tarayıcıda Oyna](https://img.shields.io/badge/Tarayicida%20Oyna-WebGL-blue?style=for-the-badge&logo=unity)](https://talatkarasakal.github.io/tenis-oyunu/)
+[![Play in Browser](https://img.shields.io/badge/Play%20in%20Browser-WebGL-blue?style=for-the-badge&logo=unity)](https://talatkarasakal.github.io/tenis-oyunu/)
+
+
 Bu proje, Unity 6 motoru kullanılarak geliştirilmiş, modern görsellere ve gelişmiş oyun mekaniklerine sahip bir Atari Breakout / Tenis hibrit oyunudur. Hem akademik değerlendirme hem de kurumsal teknik incelemeler için profesyonel standartlarda hazırlanmıştır.
 
 ---
@@ -32,9 +36,19 @@ Bu projenin en dikkat çekici noktası, **İnsan-Yapay Zeka İş Birliği (AI-Ag
 
 ### 🚀 Kurulum ve Çalıştırma Talimatları
 1. **Unity Hub'ı Açın:** Unity 6 veya üzeri bir versiyonun yüklü olduğundan emin olun.
-2. **Projeyi Klonlayın:** `git clone https://github.com/kullaniciadi/tenis-oyunu.git`
+2. **Projeyi Klonlayın:** `git clone https://github.com/TalatKarasakal/tenis-oyunu.git`
 3. **Unity ile Açın:** Klasörü Unity editörüne sürükleyin ve kütüphanelerin yüklenmesini bekleyin.
 4. **Sahneyi Başlatın:** `Assets/Scenes/OyunSahnesi.unity` dosyasını açın ve **Play** butonuna basın.
+
+### 🤖 CI/CD ve Unity Lisans Kurulumu
+GitHub Actions üzerindeki GameCI iş akışının çalışabilmesi için aşağıdaki adımları izleyerek gerekli lisans anahtarlarını ayarlardan eklemeniz gerekmektedir:
+
+1. **Lisans Talep Dosyası Oluşturma (.alf):** Unity'yi yerel bilgisayarınızda veya CI üzerinde çalıştırarak bir `.alf` (Activation License File) dosyası edinin.
+2. **Lisansı Aktifleştirme:** [Unity Manuel Aktivasyon](https://license.unity3d.com/manual) sayfasına gidin, `.alf` dosyasını yükleyip aktif edin ve oluşan `.ulf` dosyasını indirin.
+3. **GitHub Secrets Tanımlama:** Repository ayarlarından **Settings > Secrets and variables > Actions** sayfasına gidin ve aşağıdaki değişkenleri ekleyin:
+   - `UNITY_LICENSE`: İndirdiğiniz `.ulf` dosyasının içeriği.
+   - `UNITY_EMAIL`: Unity hesap e-postası.
+   - `UNITY_PASSWORD`: Unity hesap şifresi.
 
 ---
 
@@ -66,6 +80,16 @@ A standout aspect of this project is the **Human-AI Collaboration (AI-Agent Coll
 
 ### 🚀 Installation and Execution Instructions
 1. **Open Unity Hub:** Ensure Unity 6 or later is installed.
-2. **Clone the Repository:** `git clone https://github.com/username/tenis-oyunu.git`
+2. **Clone the Repository:** `git clone https://github.com/TalatKarasakal/tenis-oyunu.git`
 3. **Open with Unity:** Drag the folder into the Unity Editor and wait for dependencies to resolve.
 4. **Launch the Scene:** Open `Assets/Scenes/OyunSahnesi.unity` and click the **Play** button.
+
+### 🤖 CI/CD and Unity License Setup
+To enable the GameCI automated pipeline on GitHub Actions, you need to add the required Unity license credentials to your repository secrets:
+
+1. **Generate License Request (.alf):** Get an `.alf` (Activation License File) by running Unity locally or via CI request runner.
+2. **Activate the License:** Go to the [Unity Manual Activation](https://license.unity3d.com/manual) page, upload the `.alf` file, and download the activated `.ulf` license file.
+3. **Configure GitHub Secrets:** In your GitHub repository settings, go to **Settings > Secrets and variables > Actions** and add the following secrets:
+   - `UNITY_LICENSE`: Paste the entire content of the `.ulf` file.
+   - `UNITY_EMAIL`: Your Unity account email address.
+   - `UNITY_PASSWORD`: Your Unity account password.
