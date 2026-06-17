@@ -24,12 +24,6 @@ Bu proje, Unity 6 motoru kullanılarak geliştirilmiş, modern görsellere ve ge
 - **Giriş Sistemi:** New Input System
 - **Versiyon Kontrol:** Git
 
-### 🤖 Geliştirme Süreci
-Bu projenin en dikkat çekici noktası, **İnsan-Yapay Zeka İş Birliği (AI-Agent Collaboration)** ile geliştirilmiş olmasıdır. Mimari kararlar, kod optimizasyonları ve hata ayıklama süreçleri, bir Kıdemli Yazılım Geliştiricisi ile bir Yapay Zeka Ajanının senkronize çalışması sonucunda tamamlanmıştır. Bu yaklaşım sayesinde:
-- Modüler ve sürdürülebilir bir kod yapısı oluşturulmuştur.
-- Performans darboğazları önceden tespit edilip optimize edilmiştir.
-- Hızlı prototipleme ve dokümantasyon süreçleri profesyonel seviyeye taşınmıştır.
-
 ### 🚀 Kurulum ve Çalıştırma Talimatları
 
 > [!IMPORTANT]
@@ -61,12 +55,6 @@ Bu projenin en dikkat çekici noktası, **İnsan-Yapay Zeka İş Birliği (AI-Ag
 - **UI:** Unity UI & TextMesh Pro (TMP)
 - **Input System:** New Input System
 - **Version Control:** Git
-
-### 🤖 Development Process
-A standout aspect of this project is the **Human-AI Collaboration (AI-Agent Collaboration)**. Architectural decisions, code optimizations, and debugging were completed through the synchronized effort of a Senior Software Developer and an AI Agent. This methodology resulted in:
-- A modular and sustainable codebase.
-- Proactive identification and optimization of performance bottlenecks.
-- Professional-grade rapid prototyping and documentation.
 
 ### 🚀 Installation and Execution Instructions
 
