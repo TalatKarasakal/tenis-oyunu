@@ -23,7 +23,9 @@ public class Salter : MonoBehaviour
 
         if (kulp == null || arkaPlan == null) 
         {
+            #if UNITY_EDITOR
             Debug.LogWarning("Salter: Kulp veya ArkaPlan atanmamış!");
+            #endif
             return;
         }
 

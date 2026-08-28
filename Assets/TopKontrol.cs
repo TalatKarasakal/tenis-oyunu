@@ -40,9 +40,15 @@ public class TopKontrol : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         if (rb == null)
+        {
+            #if UNITY_EDITOR
             Debug.LogError("TopKontrol: Rigidbody2D bulunamadı!", this);
+            #endif
+        }
         else
+        {
             rb.freezeRotation = true;
+        }
     }
 
     void Start()
@@ -62,8 +68,10 @@ public class TopKontrol : MonoBehaviour
         }
 
         gm = Object.FindAnyObjectByType<OyunYoneticisi>();
+        #if UNITY_EDITOR
         if (gm == null)
             Debug.LogError("TopKontrol: OyunYoneticisi bulunamadı!", this);
+        #endif
 
         rb.linearVelocity = Vector2.zero;
         currentSpeed = initialSpeed;
