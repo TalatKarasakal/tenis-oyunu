@@ -10,6 +10,8 @@ public class OyunYoneticisiTests
     public void Setup()
     {
         testObject = new GameObject("OyunYoneticisiTestObj");
+        testObject.SetActive(false); // Add component securely while inactive
+
         oyunYoneticisi = testObject.AddComponent<OyunYoneticisi>();
 
         // Mock game objects to avoid NullReferenceExceptions during ResetGameObjects
@@ -32,8 +34,6 @@ public class OyunYoneticisiTests
         {
             var dilYoneticisiObj = new GameObject("DilYoneticisi");
             DilYoneticisi.Instance = dilYoneticisiObj.AddComponent<DilYoneticisi>();
-            // Wake it up to initialize dictionaries
-            dilYoneticisiObj.SendMessage("Awake");
         }
 
         // Directly initialize the dictionaries to prevent NullReferenceException in CeviriAl
@@ -51,6 +51,9 @@ public class OyunYoneticisiTests
         oyunYoneticisi.gameEnded = true;
         oyunYoneticisi.gamePaused = true;
         oyunYoneticisi.roundEnded = true;
+
+        // Activate once completely initialized
+        testObject.SetActive(true);
     }
 
     [TearDown]
