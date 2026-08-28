@@ -38,8 +38,16 @@ public class OyuncuKontrol : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (rb == null) Debug.LogError("OyuncuKontrol: Rigidbody2D bulunamadı!");
-        else rb.freezeRotation = true;
+        if (rb == null)
+        {
+#if UNITY_EDITOR
+            Debug.LogError("OyuncuKontrol: Rigidbody2D bulunamadı!");
+#endif
+        }
+        else
+        {
+            rb.freezeRotation = true;
+        }
     }
 
     void Start()
