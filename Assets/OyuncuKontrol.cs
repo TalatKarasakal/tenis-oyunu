@@ -30,6 +30,9 @@ public class OyuncuKontrol : MonoBehaviour
     private SpriteRenderer sr;
     private Color originalColor;
 
+    private GameObject ball;
+    private Rigidbody2D ballRb;
+
     // Dash (Zıplama) Değişkenleri
     private float currentCharge = 0f;
     private bool isCharging = false;
@@ -51,6 +54,12 @@ public class OyuncuKontrol : MonoBehaviour
         if (sr != null)
         {
             originalColor = sr.color;
+        }
+
+        ball = GameObject.FindWithTag("Ball");
+        if (ball != null)
+        {
+            ballRb = ball.GetComponent<Rigidbody2D>();
         }
     }
 
@@ -149,15 +158,13 @@ public class OyuncuKontrol : MonoBehaviour
 
     void TryHit()
     {
-        var ball = GameObject.FindWithTag("Ball");
         if (ball == null) return;
         if (Vector2.Distance(transform.position, ball.transform.position) > hitRange) return;
 
-        var bRb = ball.GetComponent<Rigidbody2D>();
-        if (bRb == null) return;
+        if (ballRb == null) return;
 
         Vector2 dir = new Vector2(rb.linearVelocity.x * 0.3f + Random.Range(-0.2f, 0.2f), 1f).normalized;
-        bRb.linearVelocity = dir * hitForce;
+        ballRb.linearVelocity = dir * hitForce;
     }
 
     void ClampPosition()
