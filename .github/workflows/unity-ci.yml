@@ -31,7 +31,21 @@ jobs:
             Library-test-
             Library-
 
+
+      - name: Check Unity License Secret
+        id: check_secret
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        run: |
+          if [ -n "$UNITY_LICENSE" ]; then
+            echo "has_license=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_license=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Run Unity Test Runner
+        if: steps.check_secret.outputs.has_license == 'true'
+
         uses: game-ci/unity-test-runner@v4
         id: test-runner
         env:
@@ -43,7 +57,7 @@ jobs:
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.test-runner.outputs.artifactsPath != ''
         with:
           name: Test-Results
           path: ${{ steps.test-runner.outputs.artifactsPath }}
@@ -68,7 +82,21 @@ jobs:
             Library-build-
             Library-
 
+
+      - name: Check Unity License Secret
+        id: check_secret
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        run: |
+          if [ -n "$UNITY_LICENSE" ]; then
+            echo "has_license=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_license=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Build WebGL
+        if: steps.check_secret.outputs.has_license == 'true'
+
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -78,16 +106,18 @@ jobs:
           targetPlatform: WebGL
 
       - name: Add .nojekyll file
-        run: touch build/WebGL/.nojekyll
+        if: steps.check_secret.outputs.has_license == 'true'
+        run: mkdir -p build/WebGL && touch build/WebGL/.nojekyll
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
+        if: steps.check_secret.outputs.has_license == 'true'
         with:
           name: WebGL-Build
           path: build/WebGL
 
       - name: Deploy to GitHub Pages 🚀
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && steps.check_secret.outputs.has_license == 'true'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/WebGL
