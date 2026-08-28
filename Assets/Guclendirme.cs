@@ -8,8 +8,14 @@ public class Guclendirme : MonoBehaviour
     // Obje sahnede ne kadar kalacak? Alınmazsa kaybolsun.
     public float lifetime = 7f; 
 
+    private OyuncuKontrol player;
+    private YapayZekaKontrol ai;
+
     void Start()
     {
+        player = FindObjectOfType<OyuncuKontrol>();
+        ai = FindObjectOfType<YapayZekaKontrol>();
+
         // Alınmazsa kendini yok et
         Destroy(gameObject, lifetime);
     }
@@ -37,10 +43,6 @@ public class Guclendirme : MonoBehaviour
     {
         float effectDuration = 5f; // Etkiler 5 saniye sürecek
         
-        // Sahnede oyuncuyu ve yapay zekayı bul
-        OyuncuKontrol player = FindObjectOfType<OyuncuKontrol>();
-        YapayZekaKontrol ai = FindObjectOfType<YapayZekaKontrol>();
-
         if (type == GuclendirmeType.SizeUp)
         {
             // Büyüme kutusunu alanın KENDİ raketi büyür
