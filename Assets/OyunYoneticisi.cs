@@ -38,7 +38,6 @@ public class OyunYoneticisi : MonoBehaviour
     // Difficulty selection
     public enum Difficulty { Easy, Medium, Hard }
     private Difficulty selectedDifficulty = Difficulty.Medium;
-    public Difficulty CurrentDifficulty => selectedDifficulty;
 
     void Start()
     {
@@ -57,11 +56,13 @@ public class OyunYoneticisi : MonoBehaviour
             aiController = aiPaddle.GetComponent<YapayZekaKontrol>();
 
         // Eksik obje uyarıları
+#if UNITY_EDITOR
         if (ball == null) Debug.LogError("Ball GameObject bulunamadı!");
         if (player == null) Debug.LogError("Player GameObject bulunamadı!");
         if (aiPaddle == null) Debug.LogError("AI Paddle GameObject bulunamadı!");
         if (playerScoreText == null) Debug.LogError("PlayerScoreText bulunamadı!");
         if (aiScoreText == null) Debug.LogError("AIScoreText bulunamadı!");
+#endif
 
         InitializeGame();
         StartGame();
@@ -148,13 +149,17 @@ public class OyunYoneticisi : MonoBehaviour
         {
             playerScore++;
             UpdateScoreUI();
+#if UNITY_EDITOR
             Debug.Log($"Player scored! Score: {playerScore}-{aiScore}");
+#endif
         }
         else
         {
             aiScore++;
             UpdateScoreUI();
+#if UNITY_EDITOR
             Debug.Log($"AI scored! Score: {playerScore}-{aiScore}");
+#endif
         }
 
         if (playerScore >= scoreToWin)
@@ -195,7 +200,9 @@ public class OyunYoneticisi : MonoBehaviour
             if (bc != null) bc.ResetBall();
         }
 
+#if UNITY_EDITOR
         Debug.Log($"Round {currentRound} started! Score: {playerScore}-{aiScore}");
+#endif
     }
 
     void EndGame(string winner)
@@ -208,7 +215,9 @@ public class OyunYoneticisi : MonoBehaviour
         var bc = ball?.GetComponent<TopKontrol>();
         if (bc != null) bc.StopBall();
 
+#if UNITY_EDITOR
         Debug.Log($"Game Over! Winner: {winner}. Final Score: {playerScore}-{aiScore}");
+#endif
     }
 
     public void RestartGame()
@@ -294,7 +303,9 @@ public class OyunYoneticisi : MonoBehaviour
         if (aiController != null)
         {
             aiController.SetDifficulty(diff);
+#if UNITY_EDITOR
             Debug.Log($"AI Difficulty set to: {diff}");
+#endif
         }
     }
 
