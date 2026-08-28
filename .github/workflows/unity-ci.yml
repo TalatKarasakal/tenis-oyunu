@@ -46,7 +46,7 @@ jobs:
         if: always()
         with:
           name: Test-Results
-          path: ${{ steps.test-runner.outputs.artifactsPath }}
+          path: artifacts
 
   build:
     name: Build & Deploy WebGL 🖥️
