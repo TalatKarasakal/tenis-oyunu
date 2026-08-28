@@ -34,6 +34,7 @@ jobs:
       - name: Run Unity Test Runner
         uses: game-ci/unity-test-runner@v4
         id: test-runner
+        if: ${{ secrets.UNITY_LICENSE != '' }}
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -43,10 +44,10 @@ jobs:
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && secrets.UNITY_LICENSE != ''
         with:
           name: Test-Results
-          path: ${{ steps.test-runner.outputs.artifactsPath }}
+          path: ${{ steps.test-runner.outputs.artifactsPath || 'artifacts' }}
 
   build:
     name: Build & Deploy WebGL 🖥️
@@ -70,6 +71,7 @@ jobs:
 
       - name: Build WebGL
         uses: game-ci/unity-builder@v4
+        if: ${{ secrets.UNITY_LICENSE != '' }}
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -78,16 +80,18 @@ jobs:
           targetPlatform: WebGL
 
       - name: Add .nojekyll file
+        if: ${{ secrets.UNITY_LICENSE != '' }}
         run: touch build/WebGL/.nojekyll
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
+        if: ${{ secrets.UNITY_LICENSE != '' }}
         with:
           name: WebGL-Build
           path: build/WebGL
 
       - name: Deploy to GitHub Pages 🚀
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && secrets.UNITY_LICENSE != ''
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/WebGL
