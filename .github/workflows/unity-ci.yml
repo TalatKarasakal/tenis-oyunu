@@ -12,6 +12,9 @@ on:
 permissions:
   contents: write
 
+env:
+  HAS_UNITY_LICENSE: ${{ secrets.UNITY_LICENSE != '' }}
+
 jobs:
   test:
     name: Run Unity Tests 🧪
@@ -32,6 +35,7 @@ jobs:
             Library-
 
       - name: Run Unity Test Runner
+        if: env.HAS_UNITY_LICENSE == 'true'
         uses: game-ci/unity-test-runner@v4
         id: test-runner
         env:
@@ -43,10 +47,10 @@ jobs:
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && env.HAS_UNITY_LICENSE == 'true'
         with:
           name: Test-Results
-          path: ${{ steps.test-runner.outputs.artifactsPath }}
+          path: ${{ steps.test-runner.outputs.artifactsPath || 'artifacts' }}
 
   build:
     name: Build & Deploy WebGL 🖥️
@@ -69,6 +73,7 @@ jobs:
             Library-
 
       - name: Build WebGL
+        if: env.HAS_UNITY_LICENSE == 'true'
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -78,16 +83,18 @@ jobs:
           targetPlatform: WebGL
 
       - name: Add .nojekyll file
+        if: env.HAS_UNITY_LICENSE == 'true'
         run: touch build/WebGL/.nojekyll
 
       - name: Upload Build Artifact
+        if: env.HAS_UNITY_LICENSE == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: WebGL-Build
           path: build/WebGL
 
       - name: Deploy to GitHub Pages 🚀
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && env.HAS_UNITY_LICENSE == 'true'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/WebGL
