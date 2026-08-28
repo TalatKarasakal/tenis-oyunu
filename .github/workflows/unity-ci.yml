@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+
   workflow_dispatch:
 
 permissions:
@@ -46,7 +44,7 @@ jobs:
         if: always()
         with:
           name: Test-Results
-          path: artifacts
+          path: ${{ steps.test-runner.outputs.artifactsPath }}
 
   build:
     name: Build & Deploy WebGL 🖥️
