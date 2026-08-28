@@ -32,6 +32,7 @@ jobs:
             Library-
 
       - name: Run Unity Test Runner
+        if: ${{ secrets.UNITY_LICENSE != '' }}
         uses: game-ci/unity-test-runner@v4
         id: test-runner
         env:
@@ -43,7 +44,7 @@ jobs:
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
-        if: always()
+        if: ${{ always() && secrets.UNITY_LICENSE != '' }}
         with:
           name: Test-Results
           path: ${{ steps.test-runner.outputs.artifactsPath }}
@@ -69,6 +70,7 @@ jobs:
             Library-
 
       - name: Build WebGL
+        if: ${{ secrets.UNITY_LICENSE != '' }}
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
