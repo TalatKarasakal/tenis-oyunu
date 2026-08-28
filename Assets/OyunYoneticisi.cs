@@ -38,7 +38,6 @@ public class OyunYoneticisi : MonoBehaviour
     // Difficulty selection
     public enum Difficulty { Easy, Medium, Hard }
     private Difficulty selectedDifficulty = Difficulty.Medium;
-    public Difficulty CurrentDifficulty => selectedDifficulty;
 
     void Start()
     {
