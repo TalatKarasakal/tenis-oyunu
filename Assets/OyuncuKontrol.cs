@@ -147,17 +147,28 @@ public class OyuncuKontrol : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) TryHit();
     }
 
+    // Cached ball reference
+    private GameObject cachedBall;
+    private Rigidbody2D cachedBallRb;
+
     void TryHit()
     {
-        var ball = GameObject.FindWithTag("Ball");
-        if (ball == null) return;
-        if (Vector2.Distance(transform.position, ball.transform.position) > hitRange) return;
+        if (cachedBall == null)
+        {
+            cachedBall = GameObject.FindWithTag("Ball");
+            if (cachedBall != null)
+            {
+                cachedBallRb = cachedBall.GetComponent<Rigidbody2D>();
+            }
+        }
 
-        var bRb = ball.GetComponent<Rigidbody2D>();
-        if (bRb == null) return;
+        if (cachedBall == null) return;
+        if (Vector2.Distance(transform.position, cachedBall.transform.position) > hitRange) return;
+
+        if (cachedBallRb == null) return;
 
         Vector2 dir = new Vector2(rb.linearVelocity.x * 0.3f + Random.Range(-0.2f, 0.2f), 1f).normalized;
-        bRb.linearVelocity = dir * hitForce;
+        cachedBallRb.linearVelocity = dir * hitForce;
     }
 
     void ClampPosition()
