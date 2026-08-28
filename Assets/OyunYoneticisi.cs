@@ -294,7 +294,9 @@ public class OyunYoneticisi : MonoBehaviour
         if (aiController != null)
         {
             aiController.SetDifficulty(diff);
+#if UNITY_EDITOR
             Debug.Log($"AI Difficulty set to: {diff}");
+#endif
         }
     }
 
