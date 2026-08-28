@@ -80,10 +80,11 @@ jobs:
           targetPlatform: WebGL
 
       - name: Add .nojekyll file
-        run: touch build/WebGL/.nojekyll
+        run: mkdir -p build/WebGL && touch build/WebGL/.nojekyll
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: WebGL-Build
           path: build/WebGL
